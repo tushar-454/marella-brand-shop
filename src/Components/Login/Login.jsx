@@ -1,5 +1,9 @@
 const Login = () => {
-  return <div>this is login page</div>;
+  return (
+    <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+      this is login page
+    </div>
+  );
 };
 
 export default Login;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+// import { FaBars } from 'react-icons/fa';
 import { LuLogIn } from 'react-icons/lu';
 import { PiSignOutBold } from 'react-icons/pi';
 import { Link, useLocation } from 'react-router-dom';
@@ -55,12 +55,12 @@ const User = () => {
           </Link>
         </div>
       )}
-      <button
+      {/* <button
         type='button'
         className='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black dark:text-slate-100 rounded-lg md:hidden'
       >
         <FaBars className='text-2xl' />
-      </button>
+      </button> */}
     </div>
   );
 };
