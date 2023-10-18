@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark #darkBrandLogo {
+  filter: invert(1) hue-rotate(200deg);
+}
