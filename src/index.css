@@ -11,3 +11,45 @@ body {
 .dark #darkBrandLogo {
   filter: invert(1) hue-rotate(200deg);
 }
+
+.customButton {
+  overflow: hidden;
+  display: inline-block;
+}
+.customButton button {
+  padding: 8px 15px 8px 15px;
+  background: #fdc131;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 25px;
+  position: relative;
+  transition-delay: 0.2s;
+  transition: 0.2s;
+  overflow: hidden;
+  display: inline-block;
+}
+.customButton button:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  content: '';
+  background-color: #8cacc0;
+  transform: scale(0, 1);
+  transform-origin: top right;
+  transition: transform 500ms cubic-bezier(0.86, 0, 0.07, 1);
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  border-radius: 8px;
+}
+.customButton:hover button {
+  color: white;
+}
+.customButton button:hover:before {
+  transform: scale(1, 1);
+  transform-origin: top left;
+}
+.text {
+  position: relative;
+}
