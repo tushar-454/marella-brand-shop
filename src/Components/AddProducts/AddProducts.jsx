@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import swal from 'sweetalert';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import SectionTitle from '../UI/SectionTitle';
@@ -91,7 +92,22 @@ const AddProducts = () => {
       photoUrl,
       desc,
     };
-    console.log(newProductObject);
+    fetch('http://localhost:5000/product', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProductObject),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          swal('Product added succssfully', '', 'success');
+          setAddProduct({ ...productInit });
+        } else {
+          swal('There was an error', 'try again please', 'error');
+        }
+      });
   };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
