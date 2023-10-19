@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import AdsSlider from './AdsSlider';
 
 // const brandProducts = [
@@ -121,9 +121,12 @@ const BrandProducts = () => {
                     <button className='bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
                       Details
                     </button>
-                    <button className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
+                    <Link
+                      to={`/update-product/${product._id}`}
+                      className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
+                    >
                       Update
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
