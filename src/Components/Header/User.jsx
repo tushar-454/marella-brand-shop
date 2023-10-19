@@ -26,7 +26,7 @@ const User = () => {
           </button>
           {/* <!-- Dropdown menu --> */}
           <div
-            className={`z-50 absolute top-12 right-0 transition origin-top ${
+            className={`z-50 absolute top-12 right-0 transition origin-top-right ${
               dropdown ? 'scale-100' : 'scale-0'
             } my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}
           >
