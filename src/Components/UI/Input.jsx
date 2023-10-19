@@ -4,7 +4,7 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 const Input = ({ displayName, icon = false, error, id, type, ...rest }) => {
   const [showPass, setShowPass] = useState(false);
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='w-full flex flex-col gap-2'>
       <label
         htmlFor={id}
         className='text-black dark:text-slate-200 font-semibold text-xl'
@@ -16,7 +16,7 @@ const Input = ({ displayName, icon = false, error, id, type, ...rest }) => {
           {...rest}
           id={id}
           type={showPass ? 'text' : type}
-          className={`w-full border text-black text-lg outline-none p-3 rounded bg-white dark:bg-slate-300 ${
+          className={`w-full border focus:border-slate-400 text-black text-lg outline-none p-3 rounded bg-white dark:bg-slate-300 ${
             icon && 'pr-12'
           }`}
         />
