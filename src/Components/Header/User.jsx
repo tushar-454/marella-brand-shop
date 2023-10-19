@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 const User = () => {
   const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
-  const { user, signoutAccount } = useContext(AuthContext);
+  const { user, signoutAccount, updateProfile } = useContext(AuthContext);
 
   return (
     <div className='flex items-center md:order-2 relative'>
@@ -20,7 +20,7 @@ const User = () => {
           >
             <img
               className='w-12 h-12 rounded-full'
-              src={user.photoURL}
+              src={user.photoURL || updateProfile.photo}
               alt='user photo'
             />
           </button>
@@ -32,7 +32,7 @@ const User = () => {
           >
             <div className='px-4 py-3'>
               <span className='block text-gray-900 dark:text-white'>
-                {user?.displayName}
+                {user?.displayName || updateProfile.name}
               </span>
               <span className='block  text-gray-500 truncate dark:text-gray-400'>
                 {user?.email}

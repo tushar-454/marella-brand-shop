@@ -1,6 +1,8 @@
 import {
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
@@ -13,6 +15,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [updateProfile, setUpdateProfile] = useState({ photo: '', name: '' });
   // login with google
   const loginGoogle = () => {
     return signInWithPopup(Auth, new GoogleAuthProvider());
@@ -23,6 +26,14 @@ const AuthProvider = ({ children }) => {
       .then(() => swal('Account signout successfully', '', 'success'))
       .catch((error) => swal('There was an error !', error.message, 'error'));
   };
+  // account creation with email and pass
+  const singupEmailandPass = (email, password) => {
+    return createUserWithEmailAndPassword(Auth, email, password);
+  };
+  // login with email and password
+  const signinEmailandPass = (email, password) => {
+    return signInWithEmailAndPassword(Auth, email, password);
+  };
   useEffect(() => {
     const unsubscribr = onAuthStateChanged(Auth, (user) => {
       setLoading(false);
@@ -32,7 +43,16 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribr();
   }, []);
 
-  const userInfo = { loading, user, loginGoogle, signoutAccount };
+  const userInfo = {
+    loading,
+    user,
+    loginGoogle,
+    signoutAccount,
+    singupEmailandPass,
+    signinEmailandPass,
+    updateProfile,
+    setUpdateProfile,
+  };
 
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
