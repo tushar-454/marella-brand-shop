@@ -6,6 +6,7 @@ import Layout from '../Components/Layout/Layout';
 import Login from '../Components/Login/Login';
 import Signup from '../Components/Signup/Signup';
 import PrivateRoutes from '../PriPubRoutes/PrivateRoutes';
+import PublicRoute from '../PriPubRoutes/PublicRoute';
 
 const routes = createBrowserRouter([
   {
@@ -34,11 +35,19 @@ const routes = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
       {
         path: '/signup',
-        element: <Signup />,
+        element: (
+          <PublicRoute>
+            <Signup />
+          </PublicRoute>
+        ),
       },
     ],
   },
