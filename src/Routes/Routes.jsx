@@ -1,12 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
-import AddProducts from '../Components/AddProducts/AddProducts';
-import UpdateProducts from '../Components/AddProducts/UpdateProducts';
 import Cart from '../Components/Cart/Cart';
 import BrandProducts from '../Components/Home/BrandProducts/BrandProducts';
 import Home from '../Components/Home/Home';
 import Layout from '../Components/Layout/Layout';
 import Login from '../Components/Login/Login';
 import NoRoute from '../Components/NoRoute/NoRoute';
+import AddProducts from '../Components/Products/AddProducts';
+import DetailsProduct from '../Components/Products/DetailsProduct';
+import UpdateProducts from '../Components/Products/UpdateProducts';
 import Signup from '../Components/Signup/Signup';
 import PrivateRoutes from '../PriPubRoutes/PrivateRoutes';
 import PublicRoute from '../PriPubRoutes/PublicRoute';
@@ -64,6 +65,16 @@ const routes = createBrowserRouter([
           fetch(`http://localhost:5000/brand/${params.brandname}`),
       },
       {
+        path: '/brand/:brandname/:productId',
+        element: (
+          <PrivateRoutes>
+            <DetailsProduct />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/${params.productId}`),
+      },
+      {
         path: '/update-product/:productId',
         element: (
           <PrivateRoutes>
@@ -71,7 +82,7 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/update-product/${params.productId}`),
+          fetch(`http://localhost:5000/${params.productId}`),
       },
     ],
   },

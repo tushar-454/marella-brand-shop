@@ -93,7 +93,7 @@ const BrandProducts = () => {
                     <b className='text-black dark:text-slate-300'>
                       Description:
                     </b>{' '}
-                    {product.desc}
+                    {`${product.desc.slice(0, 100)} . . .`}
                   </p>
                   <div className='flex justify-between items-center'>
                     <h2 className='dark:text-slate-400'>
@@ -118,9 +118,14 @@ const BrandProducts = () => {
                     </p>
                   </div>
                   <div className='flex justify-between items-center py-5'>
-                    <button className='bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
+                    <Link
+                      to={`/brand/${product.brand.toLowerCase()}/${
+                        product._id
+                      }`}
+                      className='bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
+                    >
                       Details
-                    </button>
+                    </Link>
                     <Link
                       to={`/update-product/${product._id}`}
                       className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
