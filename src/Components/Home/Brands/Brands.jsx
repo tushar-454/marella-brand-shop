@@ -52,8 +52,9 @@ const Brands = () => {
       <div className='max-w-screen-xl mx-auto p-4'>
         <SectionTitle
           displayName={'Our Brands'}
-          from={'#a200ff'}
-          to={'#ffc505'}
+          style={{
+            backgroundImage: 'linear-gradient(to right, #ffc505,#a200ff)',
+          }}
         />
         {/* brands wrap */}
         <div className='grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 my-10'>

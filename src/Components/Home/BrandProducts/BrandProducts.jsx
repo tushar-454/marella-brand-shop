@@ -1,3 +1,5 @@
+import AdsSlider from './AdsSlider';
+
 const brandProducts = [
   {
     id: 1,
@@ -61,7 +63,11 @@ const BrandProducts = () => {
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-xl mx-auto p-4'>
         {/* ads slider  */}
-        <div className='adsSlider'>ads slider</div>
+        <div className='adsSlider'>
+          <div className='slider'>
+            <AdsSlider />
+          </div>
+        </div>
         {/* product list based on brand, data come from database  */}
         <div className='grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-20'>
           {brandProducts.map((product, index) => (
