@@ -1,10 +1,41 @@
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import swal from 'sweetalert';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
-
 const DetailsProduct = () => {
   const oneProductData = useLoaderData();
-  const { proName, desc, brand, price, category, rating, photoUrl } =
+  const { _id, proName, desc, brand, price, category, rating, photoUrl } =
     oneProductData[0];
+  const { user } = useContext(AuthContext);
+  const handleAddToCart = () => {
+    const cartProductObj = {
+      _id,
+      uid: user.uid,
+      proName,
+      desc,
+      brand,
+      price,
+      category,
+      rating,
+      photoUrl,
+    };
+    fetch('http://localhost:5000/carts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartProductObj),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          swal('Product added in cart successfully.', '', 'success');
+        } else {
+          swal('There was an error !', '', 'error');
+        }
+      });
+  };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-lg mx-auto p-4'>
@@ -38,7 +69,11 @@ const DetailsProduct = () => {
               </p>
             </div>
             <div className='flex justify-between items-center py-5'>
-              <Button displayName={'Add to cart'} type={'button'} />
+              <Button
+                displayName={'Add to cart'}
+                type={'button'}
+                onClick={() => handleAddToCart()}
+              />
             </div>
           </div>
         </div>
