@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import AddProducts from '../Components/AddProducts/AddProducts';
 import Cart from '../Components/Cart/Cart';
+import BrandProducts from '../Components/Home/BrandProducts/BrandProducts';
 import Home from '../Components/Home/Home';
 import Layout from '../Components/Layout/Layout';
 import Login from '../Components/Login/Login';
@@ -49,6 +50,14 @@ const routes = createBrowserRouter([
           <PublicRoute>
             <Signup />
           </PublicRoute>
+        ),
+      },
+      {
+        path: '/brand/:brandname',
+        element: (
+          <PrivateRoutes>
+            <BrandProducts />
+          </PrivateRoutes>
         ),
       },
     ],
