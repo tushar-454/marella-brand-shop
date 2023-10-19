@@ -5,12 +5,11 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
 const DetailsProduct = () => {
   const oneProductData = useLoaderData();
-  const { _id, proName, desc, brand, price, category, rating, photoUrl } =
+  const { proName, desc, brand, price, category, rating, photoUrl } =
     oneProductData[0];
   const { user } = useContext(AuthContext);
   const handleAddToCart = () => {
     const cartProductObj = {
-      _id,
       uid: user.uid,
       proName,
       desc,
@@ -20,6 +19,7 @@ const DetailsProduct = () => {
       rating,
       photoUrl,
     };
+
     fetch('http://localhost:5000/carts', {
       method: 'POST',
       headers: {
