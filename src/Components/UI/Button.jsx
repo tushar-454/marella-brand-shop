@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ type, displayName, loginWith = false, icon }) => {
+const Button = ({ type, displayName, loginWith = false, icon, onClick }) => {
   return (
     <button
       type={type}
+      onClick={onClick}
       className={`${
         loginWith
           ? '!bg-white !border !transition hover:bg-slate-200 !text-black dark:bg-slate-400 !rounded-full font-semibold'
@@ -21,6 +22,7 @@ Button.propTypes = {
   displayName: PropTypes.string,
   loginWith: PropTypes.bool,
   icon: PropTypes.node,
+  onClick: PropTypes.func,
 };
 
 export default Button;

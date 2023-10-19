@@ -1,9 +1,22 @@
+import { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import loginImg from '../../assets/login-image.png';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 const Login = () => {
+  const { loginGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLoginGoogle = () => {
+    loginGoogle()
+      .then(() => {
+        swal('Account login successfully', '', 'success');
+        navigate('/');
+      })
+      .catch((error) => swal('There was an error !', error.message, 'error'));
+  };
   return (
     <div className='bg-white dark:bg-gray-900/90'>
       <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
@@ -57,6 +70,7 @@ const Login = () => {
                 displayName={'Login with google'}
                 type={'button'}
                 loginWith={true}
+                onClick={() => handleLoginGoogle()}
                 icon={<FcGoogle className='text-2xl' />}
               />
               <div className='info'>

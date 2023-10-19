@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 // import { FaBars } from 'react-icons/fa';
 import { LuLogIn } from 'react-icons/lu';
 import { PiSignOutBold } from 'react-icons/pi';
 import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const User = () => {
   const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
-  const user = false;
+  const { user, signoutAccount } = useContext(AuthContext);
 
   return (
     <div className='flex items-center md:order-2 relative'>
@@ -19,7 +20,7 @@ const User = () => {
           >
             <img
               className='w-12 h-12 rounded-full'
-              src='https://cutt.ly/xwQLMFJD'
+              src={user.photoURL}
               alt='user photo'
             />
           </button>
@@ -31,14 +32,17 @@ const User = () => {
           >
             <div className='px-4 py-3'>
               <span className='block text-gray-900 dark:text-white'>
-                Bonnie Green
+                {user?.displayName}
               </span>
               <span className='block  text-gray-500 truncate dark:text-gray-400'>
-                name@flowbite.com
+                {user?.email}
               </span>
             </div>
             <ul className='py-2' aria-labelledby='user-menu-button'>
-              <li className='flex gap-2 items-center cursor-pointer px-4 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'>
+              <li
+                onClick={() => signoutAccount()}
+                className='flex gap-2 items-center cursor-pointer px-4 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
+              >
                 Sign out <PiSignOutBold />
               </li>
             </ul>
