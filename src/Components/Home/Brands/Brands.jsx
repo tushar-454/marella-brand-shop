@@ -61,9 +61,12 @@ const Brands = () => {
           {brands.map((brand, index) => (
             <div
               key={index}
-              className='group border rounded-lg px-5 py-10 md:py-0 flex flex-col items-center cursor-pointer'
+              className='group border rounded-lg px-5 py-10 md:py-0 cursor-pointer'
             >
-              <Link to={`/brand/${brand.path}`} className='px-5 py-10 md:py-0'>
+              <Link
+                to={`/brand/${brand.path}`}
+                className='px-5 py-10 md:py-0 flex flex-col items-center'
+              >
                 <img
                   src={brand.image}
                   alt={brand.brandName}

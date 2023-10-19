@@ -71,54 +71,65 @@ const BrandProducts = () => {
           </div>
         </div>
         {/* product list based on brand, data come from database  */}
-        <div className='grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-20'>
-          {brandProducts?.map((product, index) => (
-            <div key={index} className='border rounded-md space-y-2'>
-              <img
-                src={product.photoUrl}
-                className='w-full rounded-tl-md rounded-tr-md'
-              />
-              <div className='textContent px-3 py-1'>
-                <h1 className='dark:text-slate-400'>
-                  <b className='text-black dark:text-slate-300'>Name:</b>{' '}
-                  {product.name}
-                </h1>
-                <p className='dark:text-slate-400'>
-                  <b className='text-black dark:text-slate-300'>Description:</b>{' '}
-                  {product.desc}
-                </p>
-                <div className='flex justify-between items-center'>
-                  <h2 className='dark:text-slate-400'>
-                    <b className='text-black dark:text-slate-300'>Brand:</b>{' '}
-                    {product.brand}
-                  </h2>
+        {brandProducts?.length === 0 && (
+          <div className='w-full text-3xl text-center font-semibold dark:text-slate-200 my-20'>
+            No products found . . .
+          </div>
+        )}
+        {brandProducts?.length > 0 && (
+          <div className='grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-20'>
+            {brandProducts?.map((product, index) => (
+              <div key={index} className='border rounded-md space-y-2'>
+                <img
+                  src={product.photoUrl}
+                  className='w-full rounded-tl-md rounded-tr-md'
+                />
+                <div className='textContent px-3 py-1'>
                   <h1 className='dark:text-slate-400'>
-                    <b className='text-black dark:text-slate-300'>Price:</b> $
-                    {product.price}
+                    <b className='text-black dark:text-slate-300'>Name:</b>{' '}
+                    {product.proName}
                   </h1>
-                </div>
-                <div className='flex justify-between items-center'>
                   <p className='dark:text-slate-400'>
-                    <b className='text-black dark:text-slate-300'>Category:</b>{' '}
-                    {product.category}
+                    <b className='text-black dark:text-slate-300'>
+                      Description:
+                    </b>{' '}
+                    {product.desc}
                   </p>
-                  <p className='dark:text-slate-400'>
-                    <b className='text-black dark:text-slate-300'>Rating:</b>{' '}
-                    {product.rating}
-                  </p>
-                </div>
-                <div className='flex justify-between items-center py-5'>
-                  <button className='bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
-                    Details
-                  </button>
-                  <button className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
-                    Update
-                  </button>
+                  <div className='flex justify-between items-center'>
+                    <h2 className='dark:text-slate-400'>
+                      <b className='text-black dark:text-slate-300'>Brand:</b>{' '}
+                      {product.brand}
+                    </h2>
+                    <h1 className='dark:text-slate-400'>
+                      <b className='text-black dark:text-slate-300'>Price:</b> $
+                      {product.price}
+                    </h1>
+                  </div>
+                  <div className='flex justify-between items-center'>
+                    <p className='dark:text-slate-400'>
+                      <b className='text-black dark:text-slate-300'>
+                        Category:
+                      </b>{' '}
+                      {product.category}
+                    </p>
+                    <p className='dark:text-slate-400'>
+                      <b className='text-black dark:text-slate-300'>Rating:</b>{' '}
+                      {product.rating}
+                    </p>
+                  </div>
+                  <div className='flex justify-between items-center py-5'>
+                    <button className='bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
+                      Details
+                    </button>
+                    <button className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'>
+                      Update
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
