@@ -4,6 +4,7 @@ import Cart from '../Components/Cart/Cart';
 import Home from '../Components/Home/Home';
 import Layout from '../Components/Layout/Layout';
 import Login from '../Components/Login/Login';
+import NoRoute from '../Components/NoRoute/NoRoute';
 import Signup from '../Components/Signup/Signup';
 import PrivateRoutes from '../PriPubRoutes/PrivateRoutes';
 import PublicRoute from '../PriPubRoutes/PublicRoute';
@@ -12,6 +13,7 @@ const routes = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <NoRoute />,
     children: [
       {
         path: '/',
