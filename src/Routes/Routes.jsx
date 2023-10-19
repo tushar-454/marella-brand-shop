@@ -5,6 +5,7 @@ import Home from '../Components/Home/Home';
 import Layout from '../Components/Layout/Layout';
 import Login from '../Components/Login/Login';
 import Signup from '../Components/Signup/Signup';
+import PrivateRoutes from '../PriPubRoutes/PrivateRoutes';
 
 const routes = createBrowserRouter([
   {
@@ -17,11 +18,19 @@ const routes = createBrowserRouter([
       },
       {
         path: '/add-product',
-        element: <AddProducts />,
+        element: (
+          <PrivateRoutes>
+            <AddProducts />
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/cart',
-        element: <Cart />,
+        element: (
+          <PrivateRoutes>
+            <Cart />
+          </PrivateRoutes>
+        ),
       },
       {
         path: '/login',

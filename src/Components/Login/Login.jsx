@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import loginImg from '../../assets/login-image.png';
@@ -8,12 +8,13 @@ import Button from '../UI/Button';
 import Input from '../UI/Input';
 const Login = () => {
   const { loginGoogle } = useContext(AuthContext);
+  const { state } = useLocation();
   const navigate = useNavigate();
   const handleLoginGoogle = () => {
     loginGoogle()
       .then(() => {
         swal('Account login successfully', '', 'success');
-        navigate('/');
+        navigate(state || '/');
       })
       .catch((error) => swal('There was an error !', error.message, 'error'));
   };
