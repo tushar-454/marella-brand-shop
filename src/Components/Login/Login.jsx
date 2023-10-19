@@ -1,4 +1,5 @@
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 import loginImg from '../../assets/login-image.png';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
@@ -58,6 +59,17 @@ const Login = () => {
                 loginWith={true}
                 icon={<FcGoogle className='text-2xl' />}
               />
+              <div className='info'>
+                <p className='w-full text-center dark:text-slate-200'>
+                  Don’t have an account?{' '}
+                  <Link
+                    to={'/signup'}
+                    className='text-yellow-600 dark:text-yellow-500'
+                  >
+                    Create an account
+                  </Link>
+                </p>
+              </div>
             </form>
           </div>
           {/* side image */}
