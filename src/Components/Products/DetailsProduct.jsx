@@ -44,13 +44,10 @@ const DetailsProduct = () => {
   };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
-      <div className='max-w-screen-xl mx-auto p-4'>
+      <div className='max-w-screen-xl mx-auto py-10'>
         <div className='flex flex-col md:flex-row gap-3 justify-center items-start border rounded-md'>
-          <div className='w-full md:w-1/2 px-3 py-1 space-y-5 my-5'>
-            <img
-              src={photoUrl}
-              className='w-full rounded-tl-md rounded-tr-md'
-            />
+          <div className='w-full md:w-1/2 space-y-5'>
+            <img src={photoUrl} className='w-full rounded-md' />
           </div>
           <div className='textContent w-full md:w-1/2 px-3 py-1 space-y-5 my-5'>
             <h1 className='text-3xl sm:text-5xl dark:text-slate-400'>
