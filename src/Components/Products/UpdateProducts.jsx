@@ -112,7 +112,8 @@ const UpdateProducts = () => {
         } else {
           swal('There was an error', 'try again please', 'error');
         }
-      });
+      })
+      .catch(() => swal('There was an error', 'try again later', 'error'));
   };
   useEffect(() => {
     const { proName, desc, brand, price, category, rating, photoUrl } =

@@ -32,7 +32,8 @@ const Cart = () => {
               setCartProduct(remaining);
               swal('Delete product from cart successfully', '', 'success');
             }
-          });
+          })
+          .catch(() => swal('There was an error', 'try again later', 'error'));
       } else {
         swal('Your cart item is safe!');
       }

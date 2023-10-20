@@ -34,7 +34,8 @@ const DetailsProduct = () => {
         } else {
           swal('There was an error !', '', 'error');
         }
-      });
+      })
+      .catch(() => swal('There was an error', 'try again later', 'error'));
   };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
