@@ -123,10 +123,10 @@ const Cart = () => {
                 <hr className='my-5' />
                 <p className='text-black text-lg dark:text-slate-200 my-5'>
                   Total:{' '}
-                  {cartProduct
+                  {`$${cartProduct
                     ?.map((item) => item.price)
                     .reduce((acc, cur) => parseFloat(acc) + parseFloat(cur), 0)
-                    .toFixed(2)}
+                    .toFixed(2)}`}
                 </p>
                 <Button
                   displayName={'Continoue to payment'}

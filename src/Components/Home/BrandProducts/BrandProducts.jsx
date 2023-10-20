@@ -35,7 +35,7 @@ const BrandProducts = () => {
               <div key={index} className='border rounded-md space-y-2'>
                 <img
                   src={product.photoUrl}
-                  className='w-full rounded-tl-md rounded-tr-md'
+                  className='w-full object-cover aspect-square rounded-tl-md rounded-tr-md'
                 />
                 <div className='textContent px-3 py-1'>
                   <h1 className='dark:text-slate-400'>
