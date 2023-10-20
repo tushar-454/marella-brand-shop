@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { BsDatabaseAdd } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { RxCross1 } from 'react-icons/rx';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const navItems = [
   {
     id: 1,
@@ -27,6 +28,7 @@ const navItems = [
 ];
 const NavItems = () => {
   const [navItemsShow, setNavItemsShow] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <>
       <div
@@ -57,17 +59,19 @@ const NavItems = () => {
           ))}
         </ul>
       </div>
-      <button
-        type='button'
-        onClick={() => setNavItemsShow(!navItemsShow)}
-        className='absolute right-20 top-5 p-2 w-10 h-10 text-2xl text-black dark:text-slate-100 rounded-lg md:hidden'
-      >
-        {navItemsShow ? (
-          <RxCross1 className='text-2xl' />
-        ) : (
-          <FaBars className='text-2xl' />
-        )}
-      </button>
+      {user && (
+        <button
+          type='button'
+          onClick={() => setNavItemsShow(!navItemsShow)}
+          className='absolute right-20 top-5 p-2 w-10 h-10 text-2xl text-black dark:text-slate-100 rounded-lg md:hidden'
+        >
+          {navItemsShow ? (
+            <RxCross1 className='text-2xl' />
+          ) : (
+            <FaBars className='text-2xl' />
+          )}
+        </button>
+      )}
     </>
   );
 };
