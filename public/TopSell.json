@@ -3,24 +3,28 @@
     "image": "https://i.postimg.cc/W3Y2p2YC/topsell-1.jpg",
     "name": "Leather Crossbody Bag",
     "price": 129.99,
-    "salePrice": 99.99
+    "salePrice": 99.99,
+    "rating": 4.8
   },
   {
     "image": "https://i.postimg.cc/WzDshQQ3/topsell-2.jpg",
     "name": "Men's Slim Fit Dress Shirt",
     "price": 49.99,
-    "salePrice": 39.99
+    "salePrice": 39.99,
+    "rating": 4.4
   },
   {
     "image": "https://i.postimg.cc/FRHrQfp0/topsell-3.jpg",
     "name": "Leather Ankle Boots",
     "price": 129.99,
-    "salePrice": 85.99
+    "salePrice": 85.99,
+    "rating": 4.2
   },
   {
     "image": "https://i.postimg.cc/MpVDYKCS/topsell-4.jpg",
     "name": "Women's Classic Trench Coat",
     "price": 89.99,
-    "salePrice": 69.99
+    "salePrice": 69.99,
+    "rating": 4.9
   }
 ]

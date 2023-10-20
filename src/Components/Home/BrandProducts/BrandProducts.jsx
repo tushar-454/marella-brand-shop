@@ -1,65 +1,9 @@
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GiArmoredBoomerang } from 'react-icons/gi';
 import { RxUpdate } from 'react-icons/rx';
+import Rating from 'react-rating';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 import AdsSlider from './AdsSlider';
-
-// const brandProducts = [
-//   {
-//     id: 1,
-//     image:
-//       'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//     name: 'Shirt',
-//     brandName: 'Adidas',
-//     category: 'shirt',
-//     rating: '4.5',
-//     price: '70',
-//     desc: 'dsfsd fds sdfsddj sdfjsdklj dsjds  jd j dsjdsjdsj fdsjdsj  dsjd  dj ds jdkd ds ds dsk ldj ldsj lds sd  dkl dkjdsdsk ds ',
-//   },
-//   {
-//     id: 1,
-//     image:
-//       'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//     name: 'Shirt',
-//     brandName: 'Adidas',
-//     category: 'shirt',
-//     rating: '4.5',
-//     price: '70',
-//     desc: 'dsfsd fds sdfsddj sdfjsdklj dsjds  jd j dsjdsjdsj fdsjdsj  dsjd  dj ds jdkd ds ds dsk ldj ldsj lds sd  dkl dkjdsdsk ds ',
-//   },
-//   {
-//     id: 1,
-//     image:
-//       'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//     name: 'Shirt',
-//     brandName: 'Adidas',
-//     category: 'shirt',
-//     rating: '4.5',
-//     price: '70',
-//     desc: 'dsfsd fds sdfsddj sdfjsdklj dsjds  jd j dsjdsjdsj fdsjdsj  dsjd  dj ds jdkd ds ds dsk ldj ldsj lds sd  dkl dkjdsdsk ds ',
-//   },
-//   {
-//     id: 1,
-//     image:
-//       'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//     name: 'Shirt',
-//     brandName: 'Adidas',
-//     category: 'shirt',
-//     rating: '4.5',
-//     price: '70',
-//     desc: 'dsfsd fds sdfsddj sdfjsdklj dsjds  jd j dsjdsjdsj fdsjdsj  dsjd  dj ds jdkd ds ds dsk ldj ldsj lds sd  dkl dkjdsdsk ds ',
-//   },
-//   {
-//     id: 1,
-//     image:
-//       'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//     name: 'Shirt',
-//     brandName: 'Adidas',
-//     category: 'shirt',
-//     rating: '4.5',
-//     price: '70',
-//     desc: 'dsfsd fds sdfsddj sdfjsdklj dsjds  jd j dsjdsjdsj fdsjdsj  dsjd  dj ds jdkd ds ds dsk ldj ldsj lds sd  dkl dkjdsdsk ds ',
-//   },
-// ];
 
 const BrandProducts = () => {
   const brandProducts = useLoaderData();
@@ -80,7 +24,7 @@ const BrandProducts = () => {
           </div>
         )}
         {brandProducts?.length > 0 && (
-          <div className='grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-20'>
+          <div className='grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-20'>
             {brandProducts?.map((product, index) => (
               <div key={index} className='border rounded-md space-y-2'>
                 <img
@@ -115,10 +59,16 @@ const BrandProducts = () => {
                       </b>{' '}
                       {product.category}
                     </p>
-                    <p className='dark:text-slate-400'>
-                      <b className='text-black dark:text-slate-300'>Rating:</b>{' '}
-                      {product.rating}
-                    </p>
+                    <Rating
+                      initialRating={product.rating}
+                      emptySymbol={
+                        <AiOutlineStar className='text-xl text-yellow-400' />
+                      }
+                      fullSymbol={
+                        <AiFillStar className='text-xl text-yellow-400' />
+                      }
+                      readonly
+                    />
                   </div>
                   <div className='flex justify-between items-center py-5'>
                     <Link

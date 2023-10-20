@@ -1,5 +1,7 @@
 import { useContext } from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BiCartDownload } from 'react-icons/bi';
+import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -71,10 +73,15 @@ const DetailsProduct = () => {
                 <b className='text-black dark:text-slate-300'>Category:</b>{' '}
                 {category}
               </p>
-              <p className='dark:text-slate-400'>
-                <b className='text-black dark:text-slate-300'>Rating:</b>{' '}
-                {rating}
-              </p>
+              <Rating
+                initialRating={rating}
+                emptySymbol={
+                  <AiOutlineStar className='text-3xl text-yellow-400' />
+                }
+                fullSymbol={<AiFillStar className='text-3xl text-yellow-400' />}
+                fractions={1}
+                readonly
+              />
             </div>
             <div className='flex justify-between items-center py-5'>
               <Button

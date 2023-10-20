@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import Rating from 'react-rating';
 import SectionTitle from '../../UI/SectionTitle';
 
 const TopSell = () => {
@@ -30,6 +32,16 @@ const TopSell = () => {
                 <h1 className='text-2xl text-slate-600 dark:text-slate-100'>
                   {item.name}
                 </h1>
+                <Rating
+                  initialRating={item.rating}
+                  emptySymbol={
+                    <AiOutlineStar className='text-xl text-yellow-400' />
+                  }
+                  fullSymbol={
+                    <AiFillStar className='text-xl text-yellow-400' />
+                  }
+                  readonly
+                />
                 <p className='text-3xl text-slate-600 dark:text-slate-100 grow'>
                   ${item.salePrice}{' '}
                   <sub className='text-slate-300'>
