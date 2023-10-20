@@ -1,0 +1,30 @@
+[
+  {
+    "image": "https://i.postimg.cc/hG8VyTk0/New-Arrival-1.jpg",
+    "name": "Elegant Lace Evening Gown",
+    "price": 179.99,
+    "stock": 15,
+    "isHot": true
+  },
+  {
+    "image": "https://i.postimg.cc/5tWwSnR0/New-Arrival-2.jpgg",
+    "name": "Classic Leather Oxford Shoes",
+    "price": 99.99,
+    "stock": 30,
+    "isHot": false
+  },
+  {
+    "image": "https://i.postimg.cc/QxPgHXgc/New-Arrival-3.jpg",
+    "name": "Chic Striped Blouse",
+    "price": 49.99,
+    "stock": 20,
+    "isHot": false
+  },
+  {
+    "image": "https://i.postimg.cc/zGgCh9p6/New-Arrival-4.jpg",
+    "name": "Cozy Knit Sweater",
+    "price": 69.99,
+    "stock": 25,
+    "isHot": true
+  }
+]

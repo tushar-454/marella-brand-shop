@@ -20,8 +20,11 @@ const TopSell = () => {
         <div className='topSellWrap grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-10'>
           {topSell?.map((item, index) => (
             <div key={index} className='flex flex-col relative'>
-              <div className='w-full'>
-                <img src={item.image} className='w-full' />
+              <div className='w-full overflow-hidden'>
+                <img
+                  src={item.image}
+                  className='w-full transition hover:scale-110'
+                />
               </div>
               <div className='bg-slate-100/50 p-5 dark:bg-slate-600 grow flex flex-col space-y-3'>
                 <h1 className='text-2xl text-slate-600 dark:text-slate-100'>
