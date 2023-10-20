@@ -40,7 +40,7 @@ const Cart = () => {
   };
 
   return (
-    <nav className='bg-white border-gray-200 dark:bg-gray-900'>
+    <nav className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-xl mx-auto p-4'>
         <div className='flex gap-5'>
           {/* cart  */}
@@ -53,7 +53,7 @@ const Cart = () => {
             />
 
             {cartProduct?.length === 0 && (
-              <div className='w-full text-3xl text-center font-semibold dark:text-slate-200 my-20'>
+              <div className='w-full h-screen text-3xl text-center font-semibold dark:text-slate-200 my-20'>
                 No carts found . . .
               </div>
             )}
