@@ -3,6 +3,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { BsDatabaseAdd } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+import { RxCross1 } from 'react-icons/rx';
 import { NavLink } from 'react-router-dom';
 const navItems = [
   {
@@ -29,7 +30,7 @@ const NavItems = () => {
   return (
     <>
       <div
-        className={`items-center justify-between ${
+        className={`outlet items-center justify-between ${
           navItemsShow ? 'block' : 'hidden'
         }
      w-full md:flex md:w-auto md:order-1`}
@@ -59,9 +60,13 @@ const NavItems = () => {
       <button
         type='button'
         onClick={() => setNavItemsShow(!navItemsShow)}
-        className='absolute right-40 top-6 p-2 w-10 h-10 text-2xl text-black dark:text-slate-100 rounded-lg md:hidden'
+        className='absolute right-20 top-5 p-2 w-10 h-10 text-2xl text-black dark:text-slate-100 rounded-lg md:hidden'
       >
-        <FaBars className='text-2xl' />
+        {navItemsShow ? (
+          <RxCross1 className='text-2xl' />
+        ) : (
+          <FaBars className='text-2xl' />
+        )}
       </button>
     </>
   );

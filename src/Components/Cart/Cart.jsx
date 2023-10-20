@@ -70,7 +70,7 @@ const Cart = () => {
                         className='w-full h-full rounded-tl-md rounded-bl-md bg-cover'
                       />
                     </div>
-                    <div className='productInfo w-2/3 py-2 space-y-2 flex flex-col'>
+                    <div className='productInfo w-2/3 py-2 pr-2 space-y-2 flex flex-col'>
                       <h1 className='text-xl sm:text-3xl dark:text-slate-400'>
                         {product.proName}
                       </h1>

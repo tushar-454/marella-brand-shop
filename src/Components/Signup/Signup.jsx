@@ -137,12 +137,6 @@ const Signup = () => {
           .catch((error) =>
             swal('There was an error !', error.message, 'error')
           );
-        // -----------
-        // updateEmail(currentUser.user, 'newemail@gmail.com')
-        //   .then(() => console.log('email updated'))
-        //   .catch((error) => console.log(error.message));
-
-        // ---------------
         swal('Account Create Successfull', '', 'success');
         setUpdateProfile({ photo: photoUrl, name: name });
         setTerms(false);
