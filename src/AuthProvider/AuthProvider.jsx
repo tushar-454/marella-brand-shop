@@ -25,7 +25,10 @@ const AuthProvider = ({ children }) => {
   // logout or signout account
   const signoutAccount = () => {
     signOut(Auth)
-      .then(() => swal('Account signout successfully', '', 'success'))
+      .then(() => {
+        setCartItemCount(0);
+        swal('Account signout successfully', '', 'success');
+      })
       .catch((error) => swal('There was an error !', error.message, 'error'));
   };
   // account creation with email and pass
