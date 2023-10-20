@@ -5,9 +5,8 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
 import SectionTitle from '../UI/SectionTitle';
-
 const Cart = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setCartItemCount } = useContext(AuthContext);
   const allCartProduct = useLoaderData();
   const userCart = allCartProduct.filter((product) => product.uid === user.uid);
   const [cartProduct, setCartProduct] = useState(userCart);
@@ -34,6 +33,7 @@ const Cart = () => {
                 (product) => product._id !== productId
               );
               setCartProduct(remaining);
+              setCartItemCount(remaining.length);
               swal('Delete product from cart successfully', '', 'success');
             }
           })

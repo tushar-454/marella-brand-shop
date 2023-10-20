@@ -28,7 +28,7 @@ const navItems = [
 ];
 const NavItems = () => {
   const [navItemsShow, setNavItemsShow] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, cartItemCount } = useContext(AuthContext);
   return (
     <>
       <div
@@ -52,6 +52,11 @@ const NavItems = () => {
                   >
                     {item.icon}
                     {item.name}
+                    {item.name === 'My Cart' && (
+                      <sup className='w-5 h-5 flex justify-center items-center bg-blue-500 text-white dark:bg-yellow-500 rounded-full'>
+                        {cartItemCount}
+                      </sup>
+                    )}
                   </span>
                 )}
               </NavLink>

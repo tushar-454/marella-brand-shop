@@ -16,6 +16,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [updateProfile, setUpdateProfile] = useState({ photo: '', name: '' });
+  const [cartItemCount, setCartItemCount] = useState(0);
+
   // login with google
   const loginGoogle = () => {
     return signInWithPopup(Auth, new GoogleAuthProvider());
@@ -36,13 +38,19 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribr = onAuthStateChanged(Auth, (user) => {
+      fetch(
+        'https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts'
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const userCartItem = data.filter((item) => item.uid === user.uid);
+          setCartItemCount(userCartItem.length);
+        });
       setLoading(false);
       setUser(user);
-      console.log(user);
     });
     return () => unsubscribr();
   }, []);
-
   const userInfo = {
     loading,
     user,
@@ -52,6 +60,8 @@ const AuthProvider = ({ children }) => {
     signinEmailandPass,
     updateProfile,
     setUpdateProfile,
+    cartItemCount,
+    setCartItemCount,
   };
 
   return (

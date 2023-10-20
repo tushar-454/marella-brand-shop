@@ -8,7 +8,7 @@ const DetailsProduct = () => {
   const oneProductData = useLoaderData();
   const { proName, desc, brand, price, category, rating, photoUrl } =
     oneProductData[0];
-  const { user } = useContext(AuthContext);
+  const { user, setCartItemCount } = useContext(AuthContext);
   const handleAddToCart = () => {
     const cartProductObj = {
       uid: user.uid,
@@ -35,6 +35,7 @@ const DetailsProduct = () => {
       .then((data) => {
         if (data.acknowledged) {
           swal('Product added in cart successfully.', '', 'success');
+          setCartItemCount((prevNum) => prevNum + 1);
         } else {
           swal('There was an error !', '', 'error');
         }
@@ -82,7 +83,9 @@ const DetailsProduct = () => {
               <Button
                 displayName={'Add to cart'}
                 type={'button'}
-                onClick={() => handleAddToCart()}
+                onClick={() => {
+                  handleAddToCart();
+                }}
                 icona={<BiCartDownload className='text-xl' />}
               />
             </div>
