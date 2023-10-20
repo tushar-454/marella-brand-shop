@@ -37,7 +37,7 @@ const NavItems = () => {
       >
         <ul className='flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
           {navItems.map((item, index) => (
-            <li key={index}>
+            <li key={index} onClick={() => setNavItemsShow(false)}>
               <NavLink
                 to={item.path}
                 className={`py-2 pl-3 pr-4 text-lg text-black dark:text-slate-100`}
