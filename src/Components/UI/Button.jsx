@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ type, displayName, loginWith = false, icon, onClick }) => {
+const Button = ({
+  type,
+  displayName,
+  loginWith = false,
+  icon,
+  icona,
+  onClick,
+}) => {
   return (
     <button
       type={type}
@@ -13,6 +20,7 @@ const Button = ({ type, displayName, loginWith = false, icon, onClick }) => {
     >
       {icon && icon}
       {displayName}
+      {icona && icona}
     </button>
   );
 };
@@ -22,6 +30,7 @@ Button.propTypes = {
   displayName: PropTypes.string,
   loginWith: PropTypes.bool,
   icon: PropTypes.node,
+  icona: PropTypes.node,
   onClick: PropTypes.func,
 };
 

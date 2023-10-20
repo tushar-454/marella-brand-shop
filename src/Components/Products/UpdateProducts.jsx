@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { RxUpdate } from 'react-icons/rx';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import Button from '../UI/Button';
@@ -218,7 +219,11 @@ const UpdateProducts = () => {
             value={updateProduct.desc}
             error={error.desc}
           />
-          <Button displayName={'Update Product'} type={'submit'} />
+          <Button
+            displayName={'Update Product'}
+            type={'submit'}
+            icona={<RxUpdate className='text-xl' />}
+          />
         </form>
       </div>
     </div>

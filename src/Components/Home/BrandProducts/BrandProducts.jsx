@@ -1,3 +1,5 @@
+import { GiArmoredBoomerang } from 'react-icons/gi';
+import { RxUpdate } from 'react-icons/rx';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 import AdsSlider from './AdsSlider';
 
@@ -123,16 +125,16 @@ const BrandProducts = () => {
                       to={`/brand/${product.brand.toLowerCase()}/${
                         product._id
                       }`}
-                      className='bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
+                      className='flex gap-2 items-center bg-blue-500 transition hover:bg-blue-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
                     >
-                      Details
+                      Details <GiArmoredBoomerang className='text-white' />
                     </Link>
                     <Link
                       to={`/update-product/${product._id}`}
                       state={`/brand/${brandname}`}
-                      className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
+                      className='flex gap-2 items-center bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
                     >
-                      Update
+                      Update <RxUpdate className='text-white' />
                     </Link>
                   </div>
                 </div>

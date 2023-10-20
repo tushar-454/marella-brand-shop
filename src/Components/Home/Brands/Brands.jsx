@@ -4,7 +4,7 @@ import SectionTitle from '../../UI/SectionTitle';
 const brands = [
   {
     id: 1,
-    image: 'https://i.postimg.cc/fRXFcmq2/adidas-brand.png',
+    image: 'https://i.postimg.cc/xd7yCGvn/adidas-brand.png',
     brandName: 'Adidas',
     path: 'adidas',
     desc: '',
@@ -25,21 +25,21 @@ const brands = [
   },
   {
     id: 4,
-    image: 'https://i.postimg.cc/SNH3YDdY/levi-brand.png',
+    image: 'https://i.postimg.cc/gJZy6wsR/levi-brand.png',
     brandName: "Levi's",
     path: 'levis',
     desc: '',
   },
   {
     id: 5,
-    image: 'https://i.postimg.cc/MZPhqWjD/nike-brand.png',
+    image: 'https://i.postimg.cc/vTwr7Q2K/nike-brand.png',
     brandName: 'Nike',
     path: 'nike',
     desc: '',
   },
   {
     id: 6,
-    image: 'https://i.postimg.cc/Bv0zMbdq/zara-brand.png',
+    image: 'https://i.postimg.cc/6p6C9bGD/zara-brand.png',
     brandName: 'Zara',
     path: 'zara',
     desc: '',

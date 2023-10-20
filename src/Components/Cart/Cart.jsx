@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { MdDeleteForever } from 'react-icons/md';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -87,6 +88,7 @@ const Cart = () => {
                       <Button
                         displayName={'Delete'}
                         onClick={() => handleDeleteCart(product._id)}
+                        icona={<MdDeleteForever className='text-xl' />}
                       />
                     </div>
                   </div>

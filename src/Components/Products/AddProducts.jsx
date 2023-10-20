@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BiCartDownload } from 'react-icons/bi';
 import swal from 'sweetalert';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
@@ -200,7 +201,11 @@ const AddProducts = () => {
             value={addProduct.desc}
             error={error.desc}
           />
-          <Button displayName={'Add Product'} type={'submit'} />
+          <Button
+            displayName={'Add Product'}
+            type={'submit'}
+            icona={<BiCartDownload className='text-xl' />}
+          />
         </form>
       </div>
     </div>
