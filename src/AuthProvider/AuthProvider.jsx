@@ -38,14 +38,16 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribr = onAuthStateChanged(Auth, (user) => {
-      fetch(
-        'https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts'
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const userCartItem = data.filter((item) => item.uid === user.uid);
-          setCartItemCount(userCartItem.length);
-        });
+      if (user) {
+        fetch(
+          'https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts'
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const userCartItem = data.filter((item) => item.uid === user.uid);
+            setCartItemCount(userCartItem.length);
+          });
+      }
       setLoading(false);
       setUser(user);
     });

@@ -32,8 +32,9 @@ const NewArrival = () => {
                   {item.name}
                 </h1>
                 <p className='text-3xl text-slate-600 dark:text-slate-100 grow'>
-                  ${item.price} <small>{`Stock: ${item.stock} left`}</small>
+                  ${item.price}
                 </p>
+                <p className='dark:text-slate-300'>{`Stock: ${item.stock} left`}</p>
                 {item.isHot && (
                   <div className='discount absolute -top-8 -left-3'>
                     <img src={hotDeals} className='w-16 rounded-full' />
