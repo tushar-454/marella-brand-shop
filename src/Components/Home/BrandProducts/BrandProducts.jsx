@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { GiArmoredBoomerang } from 'react-icons/gi';
 import { RxUpdate } from 'react-icons/rx';
@@ -10,6 +11,11 @@ const BrandProducts = () => {
   const { brandname } = useParams();
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
+      <Helmet>
+        <title>{`Marella Brand ${
+          brandname.charAt(0).toUpperCase() + brandname.slice(1)
+        }`}</title>
+      </Helmet>
       <div className='max-w-screen-xl mx-auto p-4'>
         {/* ads slider  */}
         <div className='adsSlider'>

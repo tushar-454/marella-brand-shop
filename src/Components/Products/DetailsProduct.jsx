@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BiCartDownload } from 'react-icons/bi';
 import Rating from 'react-rating';
@@ -46,6 +47,9 @@ const DetailsProduct = () => {
   };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
+      <Helmet>
+        <title>{`Marella Brand ${brand} - ${proName}`}</title>
+      </Helmet>
       <div className='max-w-screen-xl mx-auto py-10'>
         <div className='flex flex-col md:flex-row gap-3 justify-center items-start border rounded-md'>
           <div className='w-full md:w-1/2 space-y-5'>

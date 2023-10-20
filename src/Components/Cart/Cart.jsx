@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { FaCcAmazonPay } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import { useLoaderData } from 'react-router-dom';
@@ -46,6 +47,9 @@ const Cart = () => {
 
   return (
     <nav className='bg-white border-gray-200 dark:bg-gray-900/90'>
+      <Helmet>
+        <title>Marella | My Cart</title>
+      </Helmet>
       <div className='max-w-screen-xl mx-auto p-4'>
         <div className='flex flex-col md:flex-row gap-5'>
           {/* cart  */}

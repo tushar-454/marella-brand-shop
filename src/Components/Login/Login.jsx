@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -60,6 +61,9 @@ const Login = () => {
   };
   return (
     <FormLayout>
+      <Helmet>
+        <title>Marella | Login </title>
+      </Helmet>
       {/* login form  */}
       <div className='w-full md:w-2/4 border dark:border-gray-400 rounded-lg p-10 my-20'>
         <h1 className='text-4xl font-bold text-black dark:text-slate-200 mb-10'>

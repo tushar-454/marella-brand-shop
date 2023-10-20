@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape */
 import { updateProfile } from 'firebase/auth';
 import { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { BsCheck2All } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -149,6 +150,9 @@ const Signup = () => {
   };
   return (
     <FormLayout>
+      <Helmet>
+        <title>Marella | Signup</title>
+      </Helmet>
       <FormIllustration src={signupImg} />
       {/* Sighup form  */}
       <div className='w-full md:w-2/4 border dark:border-gray-400 rounded-lg p-10 my-20'>

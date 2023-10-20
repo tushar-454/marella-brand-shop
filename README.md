@@ -10,6 +10,7 @@
 - Users can see cart all item total price.
 - Top sell section discount is dynamic, it make based on price and saleprice.
 - New Arrival section some product hot deal or not hot deal it will dynamic, if isHot true, just that product hot deal icon show.
+- Dynamically page title changed.
 - Users can add a product in database.
 - Users can update that product which he/she add in database.
 - Users can add product in cart, and see anytime.

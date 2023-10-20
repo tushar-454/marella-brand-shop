@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { RxUpdate } from 'react-icons/rx';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -134,6 +135,9 @@ const UpdateProducts = () => {
   }, [updateableProductData]);
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
+      <Helmet>
+        <title>Marella | Update Product</title>
+      </Helmet>
       <div className='max-w-screen-xl mx-auto p-4 '>
         <SectionTitle
           displayName={'Update Product'}
