@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
@@ -27,6 +27,8 @@ const UpdateProducts = () => {
   const [updateProduct, setUpdateProduct] = useState({ ...productInit });
   const [error, setError] = useState({ ...errorInit });
   const updateableProductData = useLoaderData();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const handleInput = (e) => {
     const { name, value } = e.target;
     setUpdateProduct((prevObj) => ({ ...prevObj, [name]: value }));
@@ -109,6 +111,7 @@ const UpdateProducts = () => {
         if (data.modifiedCount) {
           swal('Product update succssfully', '', 'success');
           setUpdateProduct({ ...productInit });
+          navigate(state);
         } else {
           swal('There was an error', 'try again please', 'error');
         }

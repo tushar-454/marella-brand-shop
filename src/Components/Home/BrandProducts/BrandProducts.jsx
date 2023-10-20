@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 import AdsSlider from './AdsSlider';
 
 // const brandProducts = [
@@ -61,6 +61,7 @@ import AdsSlider from './AdsSlider';
 
 const BrandProducts = () => {
   const brandProducts = useLoaderData();
+  const { brandname } = useParams();
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-xl mx-auto p-4'>
@@ -128,6 +129,7 @@ const BrandProducts = () => {
                     </Link>
                     <Link
                       to={`/update-product/${product._id}`}
+                      state={`/brand/${brandname}`}
                       className='bg-purple-500 transition hover:bg-purple-600 px-4 py-1 text-white rounded-tl-lg rounded-br-lg rounded-tr rounded-bl'
                     >
                       Update
