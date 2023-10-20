@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { FaCcAmazonPay } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -10,7 +11,6 @@ const Cart = () => {
   const allCartProduct = useLoaderData();
   const userCart = allCartProduct.filter((product) => product.uid === user.uid);
   const [cartProduct, setCartProduct] = useState(userCart);
-
   const handleDeleteCart = (productId) => {
     swal({
       title: 'Are you sure?',
@@ -104,9 +104,33 @@ const Cart = () => {
                 backgroundImage: 'linear-gradient(to right, #a200ff,#ffc505)',
               }}
             />
-            <div className='checkoutWrap my-10'>
-              <h1>hello</h1>
-            </div>
+            {cartProduct.length > 0 && (
+              <div className='checkoutWrap my-10'>
+                <ul>
+                  {cartProduct?.map((item, index) => (
+                    <li
+                      key={index}
+                      className='text-black text-lg dark:text-slate-200'
+                    >
+                      {++index}. {item.proName}
+                    </li>
+                  ))}
+                </ul>
+                <hr className='my-5' />
+                <p className='text-black text-lg dark:text-slate-200 my-5'>
+                  Total:{' '}
+                  {cartProduct
+                    ?.map((item) => item.price)
+                    .reduce((acc, cur) => parseFloat(acc) + parseFloat(cur), 0)
+                    .toFixed(2)}
+                </p>
+                <Button
+                  displayName={'Continoue to payment'}
+                  icona={<FaCcAmazonPay className='text-white text-2xl' />}
+                  onClick={() => swal('Feature Upcoming', '', 'info')}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
