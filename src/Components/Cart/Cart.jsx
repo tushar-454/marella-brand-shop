@@ -42,9 +42,9 @@ const Cart = () => {
   return (
     <nav className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-xl mx-auto p-4'>
-        <div className='flex gap-5'>
+        <div className='flex flex-col md:flex-row gap-5'>
           {/* cart  */}
-          <div className='w-2/3'>
+          <div className='w-full md:w-2/3'>
             <SectionTitle
               displayName={'Shopping Cart'}
               style={{
@@ -91,7 +91,17 @@ const Cart = () => {
             )}
           </div>
           {/* checkout  */}
-          <div className='w-1/3'></div>
+          <div className='w-full md:w-1/3'>
+            <SectionTitle
+              displayName={'Checkout'}
+              style={{
+                backgroundImage: 'linear-gradient(to right, #a200ff,#ffc505)',
+              }}
+            />
+            <div className='checkoutWrap my-10'>
+              <h1>hello</h1>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
