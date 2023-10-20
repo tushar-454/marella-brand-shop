@@ -9,14 +9,22 @@ const User = () => {
   const [dropdown, setDropdown] = useState(false);
   const { pathname } = useLocation();
   const { user, signoutAccount, updateProfile } = useContext(AuthContext);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('color-scheme')) {
+      setDarkMode(localStorage.getItem('color-scheme'));
+    }
+  }, []);
 
   useEffect(() => {
     const htmlTag = document.querySelector('html');
     if (darkMode) {
       htmlTag.classList.add('dark');
+      localStorage.setItem('color-scheme', 'dark');
     } else {
       htmlTag.classList.remove('dark');
+      localStorage.removeItem('color-scheme');
     }
     const outlet = document.querySelectorAll('.outlet');
     outlet.forEach((item) =>
