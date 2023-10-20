@@ -37,7 +37,10 @@ const routes = createBrowserRouter([
             <Cart />
           </PrivateRoutes>
         ),
-        loader: () => fetch('http://localhost:5000/carts'),
+        loader: () =>
+          fetch(
+            'https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts'
+          ),
       },
       {
         path: '/login',
@@ -63,7 +66,9 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/brand/${params.brandname}`),
+          fetch(
+            `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/brand/${params.brandname}`
+          ),
       },
       {
         path: '/brand/:brandname/:productId',
@@ -73,7 +78,9 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/${params.productId}`),
+          fetch(
+            `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/${params.productId}`
+          ),
       },
       {
         path: '/update-product/:productId',
@@ -83,7 +90,9 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/${params.productId}`),
+          fetch(
+            `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/${params.productId}`
+          ),
       },
     ],
   },

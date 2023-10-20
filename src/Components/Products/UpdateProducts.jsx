@@ -95,7 +95,7 @@ const UpdateProducts = () => {
       desc,
     };
     fetch(
-      `http://localhost:5000/update-product/${updateableProductData[0]._id}`,
+      `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/update-product/${updateableProductData[0]._id}`,
       {
         method: 'PUT',
         headers: {

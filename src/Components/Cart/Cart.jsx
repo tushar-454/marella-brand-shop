@@ -20,9 +20,12 @@ const Cart = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/carts/${user.uid}/${productId}`, {
-          method: 'DELETE',
-        })
+        fetch(
+          `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts/${user.uid}/${productId}`,
+          {
+            method: 'DELETE',
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
