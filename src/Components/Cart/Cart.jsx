@@ -1,20 +1,42 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
 import SectionTitle from '../UI/SectionTitle';
 
 const Cart = () => {
   const { user } = useContext(AuthContext);
-  const cartProduct = useLoaderData();
-  const userCart = cartProduct.filter((product) => product.uid === user.uid);
+  const allCartProduct = useLoaderData();
+  const userCart = allCartProduct.filter((product) => product.uid === user.uid);
+  const [cartProduct, setCartProduct] = useState(userCart);
 
   const handleDeleteCart = (productId) => {
-    fetch(`http://localhost:5000/carts/${user.uid}/${productId}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    swal({
+      title: 'Are you sure?',
+      text: 'Deleted your cart item !',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`http://localhost:5000/carts/${user.uid}/${productId}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remaining = cartProduct.filter(
+                (product) => product._id !== productId
+              );
+              setCartProduct(remaining);
+              swal('Delete product from cart successfully', '', 'success');
+            }
+          });
+      } else {
+        swal('Your cart item is safe!');
+      }
+    });
   };
 
   return (
@@ -30,14 +52,14 @@ const Cart = () => {
               }}
             />
 
-            {userCart.length === 0 && (
+            {cartProduct?.length === 0 && (
               <div className='w-full text-3xl text-center font-semibold dark:text-slate-200 my-20'>
                 No carts found . . .
               </div>
             )}
-            {userCart.length > 0 && (
+            {cartProduct?.length > 0 && (
               <div className='cartWrap my-10 space-y-10'>
-                {userCart?.map((product, index) => (
+                {cartProduct?.map((product, index) => (
                   <div
                     key={index}
                     className='flex gap-5 border rounded-md shadow-lg'
