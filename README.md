@@ -11,6 +11,7 @@
 - Top sell section discount is dynamic, it make based on price and saleprice.
 - New Arrival section some product hot deal or not hot deal it will dynamic, if isHot true, just that product hot deal icon show.
 - Dynamically page title changed.
+- Dynamically password required checked and user can see what more cherecters need for right password
 - Users can add a product in database.
 - Users can update that product which he/she add in database.
 - Users can add product in cart, and see anytime.
