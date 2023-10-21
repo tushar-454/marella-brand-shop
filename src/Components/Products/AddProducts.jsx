@@ -140,7 +140,7 @@ const AddProducts = () => {
               value={addProduct.proName}
               error={error.proName}
             />
-            <Input
+            {/* <Input
               displayName={'Brand Name'}
               type={'text'}
               id={'brand'}
@@ -149,7 +149,33 @@ const AddProducts = () => {
               onChange={handleInput}
               value={addProduct.brand}
               error={error.brand}
-            />
+            /> */}
+            <div className='w-full flex flex-col gap-2'>
+              <label
+                htmlFor='brand'
+                className='text-black dark:text-slate-200 font-semibold text-xl'
+              >
+                Brand Name
+              </label>
+              <div className='relative'>
+                <select
+                  name='brand'
+                  id='brand'
+                  onChange={handleInput}
+                  value={addProduct.brand}
+                  className={`w-full border focus:border-slate-400 text-black text-lg outline-none p-3 rounded bg-white dark:bg-slate-300`}
+                >
+                  <option value=''>Select your brand</option>
+                  <option value='Adidas'>Adidas</option>
+                  <option value='Gucci'>Gucci</option>
+                  <option value='H&m'>H&M</option>
+                  <option value='Levis'>Levi&apos;s</option>
+                  <option value='Nike'>Nike</option>
+                  <option value='Zara'>Zara</option>
+                </select>
+                <p className='text-red-500'>{error.brand}</p>
+              </div>
+            </div>
           </div>
           <div className='w-full flex flex-col sm:flex-row gap-5'>
             <Input

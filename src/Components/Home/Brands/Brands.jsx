@@ -20,7 +20,7 @@ const brands = [
     id: 3,
     image: 'https://i.postimg.cc/ncXNL64t/hm-brand.png',
     brandName: 'H&M',
-    path: 'hm',
+    path: 'h&m',
     desc: '',
   },
   {
