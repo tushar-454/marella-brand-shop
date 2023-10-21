@@ -63,11 +63,23 @@ const AddProducts = () => {
         price: 'Product price required.',
       }));
       return;
+    } else if (price < 0) {
+      setError((prevError) => ({
+        ...prevError,
+        price: 'Product price must be greater then 0.',
+      }));
+      return;
     }
     if (!rating) {
       setError((prevError) => ({
         ...prevError,
         rating: 'Product rating required.',
+      }));
+      return;
+    } else if (rating < 0 || rating > 5) {
+      setError((prevError) => ({
+        ...prevError,
+        rating: 'Product rating will be 0.0 - 5.0',
       }));
       return;
     }
