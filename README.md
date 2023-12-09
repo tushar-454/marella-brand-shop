@@ -1,20 +1,68 @@
 ## Project Name: Marella Brand Shop
 
 #### [Live site](https://marella-brand-shop.web.app/) : [https://marella-brand-shop.web.app/](https://marella-brand-shop.web.app/)
+This project is an e-commerce web application built using React, Tailwind CSS, and Firebase.In Backend using ExpressJS and mongoDB. It allows users to browse products, manage their cart, create accounts, and more.
 
-### There are some project features.
+## Features
 
-- Darkmode or lightmode remember, if page load website theme remaing last color schemes
-- When user click profile icon then show dropdown item, it will be hide if user click anywhere even page scroll.
-- User can see total cart length on My Cart NavItem.
-- Users can see cart all item total price.
-- Top sell section discount is dynamic, it make based on price and saleprice.
-- New Arrival section some product hot deal or not hot deal it will dynamic, if isHot true, just that product hot deal icon show.
-- Dynamically page title changed.
-- Dynamically password required checked and user can see what more cherecters need for right password
-- Users can add a product in database.
-- Users can update that product which he/she add in database.
-- Users can add product in cart, and see anytime.
-- If users logout user cannot see his cart item, but when again login user can see all previous cart item as well.
-- Users can delete product from cart.
-- User can create an account with google or email and password.
+1. **Theme Persistence**:
+   - The website supports both dark mode and light mode. The chosen theme is remembered even after page reloads.
+
+2. **User Profile Dropdown**:
+   - Clicking on the profile icon reveals a dropdown menu. The dropdown closes when clicking outside of it or when scrolling the page.
+
+3. **Cart Information**:
+   - Users can view the total number of items in their cart on the navigation bar.
+   - Cart displays the total price of all items.
+
+4. **Top Sell Section**:
+   - Discounts in the top sell section are dynamic and calculated based on the price and sale price of items.
+
+5. **New Arrival Section**:
+   - Products in the new arrival section are marked as hot deals if they have a certain property (e.g., isHot = true).
+
+6. **Dynamic Page Title**:
+   - The page title is updated dynamically based on the content being viewed.
+
+7. **Password Requirements**:
+   - Users receive feedback on the strength of their password and the required characters for a secure password.
+
+8. **Database Operations**:
+   - Users can add products to the database.
+   - Update products previously added to the database.
+
+9. **Cart Functionality**:
+   - Users can add products to their cart and view them at any time.
+   - Cart items are associated with the user account and persist through logins.
+
+10. **User Authentication**:
+    - Users can create an account using Google or email/password.
+    - Logout functionality clears the user's access to their cart items.
+
+## Technologies Used
+
+- **React**: Front-end development framework.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Firebase**: Cloud-based platform used for authentication, and hosting.
+- **ExpressJS**: For manage backend server.
+- **MongoDB**: For store and manage all data.
+
+## How to Run the Project
+
+1. Clone this repository to your local machine.
+2. Install dependencies using `yarn`.
+3. Set up Firebase configurations.
+4. Run the project using `yarn dev`.
+
+## How to Contribute
+
+If you'd like to contribute to this project, please follow these steps:
+
+1. Fork this repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Create a pull request.
+
+
+Feel free to reach out with any questions or suggestions!
