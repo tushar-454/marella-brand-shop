@@ -1,10 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Cart from '../Components/Cart/Cart';
+import Checkout from '../Components/Checkout/Checkout';
 import BrandProducts from '../Components/Home/BrandProducts/BrandProducts';
 import Home from '../Components/Home/Home';
 import Layout from '../Components/Layout/Layout';
 import Login from '../Components/Login/Login';
 import NoRoute from '../Components/NoRoute/NoRoute';
+import PaymentHistory from '../Components/PaymentHistory/PaymentHistory';
 import AddProducts from '../Components/Products/AddProducts';
 import DetailsProduct from '../Components/Products/DetailsProduct';
 import UpdateProducts from '../Components/Products/UpdateProducts';
@@ -37,10 +39,7 @@ const routes = createBrowserRouter([
             <Cart />
           </PrivateRoutes>
         ),
-        loader: () =>
-          fetch(
-            'https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts'
-          ),
+        loader: () => fetch('http://localhost:5000/carts'),
       },
       {
         path: '/login',
@@ -66,9 +65,7 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/brand/${params.brandname}`
-          ),
+          fetch(`http://localhost:5000/brand/${params.brandname}`),
       },
       {
         path: '/brand/:brandname/:productId',
@@ -78,9 +75,7 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/${params.productId}`
-          ),
+          fetch(`http://localhost:5000/${params.productId}`),
       },
       {
         path: '/update-product/:productId',
@@ -90,9 +85,23 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/${params.productId}`
-          ),
+          fetch(`http://localhost:5000/${params.productId}`),
+      },
+      {
+        path: '/checkout',
+        element: (
+          <PrivateRoutes>
+            <Checkout />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: '/payment-history',
+        element: (
+          <PrivateRoutes>
+            <PaymentHistory />
+          </PrivateRoutes>
+        ),
       },
     ],
   },

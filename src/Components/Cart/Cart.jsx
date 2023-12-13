@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaCcAmazonPay } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
@@ -21,12 +21,9 @@ const Cart = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(
-          `https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/carts/${user.uid}/${productId}`,
-          {
-            method: 'DELETE',
-          }
-        )
+        fetch(`http://localhost:5000/carts/${user.uid}/${productId}`, {
+          method: 'DELETE',
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -128,11 +125,24 @@ const Cart = () => {
                     .reduce((acc, cur) => parseFloat(acc) + parseFloat(cur), 0)
                     .toFixed(2)}`}
                 </p>
-                <Button
-                  displayName={'Continoue to payment'}
-                  icona={<FaCcAmazonPay className='text-white text-2xl' />}
-                  onClick={() => swal('Feature Upcoming', '', 'info')}
-                />
+                <Link
+                  to={'/checkout'}
+                  state={{
+                    payment: cartProduct
+                      ?.map((item) => item.price)
+                      .reduce(
+                        (acc, cur) => parseFloat(acc) + parseFloat(cur),
+                        0
+                      )
+                      .toFixed(2),
+                    productLength: cartProduct.length,
+                    cartProduct,
+                  }}
+                  className={`w-full flex gap-3 justify-center items-center py-3 rounded-md text-lg text-white bg-yellow-700 dark:bg-yellow-600`}
+                >
+                  Continoue to payment
+                  <FaCcAmazonPay className='text-white text-2xl' />
+                </Link>
               </div>
             )}
           </div>

@@ -106,16 +106,13 @@ const AddProducts = () => {
       photoUrl,
       desc,
     };
-    fetch(
-      'https://brand-shop-server-pjpoygb70-tushar-imrans-projects.vercel.app/product',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newProductObject),
-      }
-    )
+    fetch('http://localhost:5000/product', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProductObject),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

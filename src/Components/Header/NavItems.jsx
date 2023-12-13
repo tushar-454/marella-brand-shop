@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { BsDatabaseAdd } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
@@ -28,7 +29,11 @@ const navItems = [
 ];
 const NavItems = () => {
   const [navItemsShow, setNavItemsShow] = useState(false);
-  const { user, cartItemCount } = useContext(AuthContext);
+  const { user, cartItemCount, setCartItemCount, reFreshCard } =
+    useContext(AuthContext);
+  useEffect(() => {
+    setCartItemCount(0);
+  }, [reFreshCard]);
   return (
     <>
       <div
