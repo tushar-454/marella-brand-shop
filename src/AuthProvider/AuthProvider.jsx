@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
       .then(() => {
         setCartItemCount(0);
         swal('Account signout successfully', '', 'success');
-        fetch('http://localhost:5000/remove-token', {
+        fetch('https://brand-shop-server-olive.vercel.app/remove-token', {
           credentials: 'include',
         }).then(() => {});
       })
@@ -46,7 +46,9 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribr = onAuthStateChanged(Auth, (user) => {
       if (user) {
-        fetch('http://localhost:5000/carts', { credentials: 'include' })
+        fetch('https://brand-shop-server-olive.vercel.app/carts', {
+          credentials: 'include',
+        })
           .then((res) => res.json())
           .then((data) => {
             const userCartItem = data.filter((item) => item.uid === user.uid);

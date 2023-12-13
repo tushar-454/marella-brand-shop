@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { RxUpdate } from 'react-icons/rx';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import SectionTitle from '../UI/SectionTitle';
@@ -29,6 +30,7 @@ const UpdateProducts = () => {
   const [updateProduct, setUpdateProduct] = useState({ ...productInit });
   const [error, setError] = useState({ ...errorInit });
   const updateableProductData = useLoaderData();
+  const { signoutAccount } = useContext(AuthContext);
   const { state } = useLocation();
   const navigate = useNavigate();
   const handleInput = (e) => {
@@ -111,7 +113,7 @@ const UpdateProducts = () => {
       desc,
     };
     fetch(
-      `http://localhost:5000/update-product/${updateableProductData[0]._id}`,
+      `https://brand-shop-server-olive.vercel.app/update-product/${updateableProductData[0]._id}`,
       {
         method: 'PUT',
         headers: {
@@ -131,7 +133,10 @@ const UpdateProducts = () => {
           swal('There was an error', 'try again please', 'error');
         }
       })
-      .catch(() => swal('There was an error', 'try again later', 'error'));
+      .catch(() => {
+        signoutAccount();
+        swal('There was an error', 'try again later', 'error');
+      });
   };
   useEffect(() => {
     const { proName, desc, brand, price, category, rating, photoUrl } =

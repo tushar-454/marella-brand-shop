@@ -21,10 +21,13 @@ const Cart = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/carts/${user.uid}/${productId}`, {
-          method: 'DELETE',
-          credentials: 'include',
-        })
+        fetch(
+          `https://brand-shop-server-olive.vercel.app/carts/${user.uid}/${productId}`,
+          {
+            method: 'DELETE',
+            credentials: 'include',
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

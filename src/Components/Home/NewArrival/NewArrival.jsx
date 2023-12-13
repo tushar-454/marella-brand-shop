@@ -1,14 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import hotDeals from '../../../assets/hot-deals.gif';
 import SectionTitle from '../../UI/SectionTitle';
 
 const NewArrival = () => {
   const [newArrival, setNewArrival] = useState(null);
+  const { signoutAccount } = useContext(AuthContext);
   useEffect(() => {
     fetch('/NewArrival.json')
       .then((res) => res.json())
-      .then((data) => setNewArrival(data));
-  }, []);
+      .then((data) => setNewArrival(data))
+      .catch(() => {
+        signoutAccount();
+      });
+  }, [signoutAccount]);
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-xl mx-auto p-4'>

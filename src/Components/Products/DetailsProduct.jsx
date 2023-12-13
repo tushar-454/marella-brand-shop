@@ -11,7 +11,7 @@ const DetailsProduct = () => {
   const oneProductData = useLoaderData();
   const { proName, desc, brand, price, category, rating, photoUrl } =
     oneProductData[0];
-  const { user, setCartItemCount } = useContext(AuthContext);
+  const { user, setCartItemCount, signoutAccount } = useContext(AuthContext);
   const handleAddToCart = () => {
     const cartProductObj = {
       uid: user.uid,
@@ -24,7 +24,7 @@ const DetailsProduct = () => {
       photoUrl,
     };
 
-    fetch('http://localhost:5000/carts', {
+    fetch('https://brand-shop-server-olive.vercel.app/carts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,10 @@ const DetailsProduct = () => {
           swal('There was an error !', '', 'error');
         }
       })
-      .catch(() => swal('There was an error', 'try again later', 'error'));
+      .catch(() => {
+        signoutAccount();
+        swal('There was an error', 'try again later', 'error');
+      });
   };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>

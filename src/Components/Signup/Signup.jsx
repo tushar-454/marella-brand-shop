@@ -139,7 +139,7 @@ const Signup = () => {
             swal('There was an error !', error.message, 'error')
           );
         swal('Account Create Successfull', '', 'success');
-        fetch(`http://localhost:5000/jwt-token`, {
+        fetch(`https://brand-shop-server-olive.vercel.app/jwt-token`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ const Signup = () => {
           credentials: 'include',
           body: JSON.stringify({ email: currentUser.user.email }),
         }).then(() => {});
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://brand-shop-server-olive.vercel.app/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -48,25 +48,32 @@ export default Checkout;
 const CheckoutForm = ({ payment, cartProduct }) => {
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
-  const { user, setRefreshCart, reFreshCard } = useContext(AuthContext);
+  const { user, setRefreshCart, reFreshCard, signoutAccount } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
 
   useEffect(() => {
     if (payment > 0) {
-      fetch(`http://localhost:5000/create-payment-intent`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ price: payment }),
-      })
+      fetch(
+        `https://brand-shop-server-olive.vercel.app/create-payment-intent`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ price: payment }),
+        }
+      )
         .then((res) => res.json())
-        .then((data) => setClientSecret(data.clientSecret));
+        .then((data) => setClientSecret(data.clientSecret))
+        .catch(() => {
+          signoutAccount();
+        });
     }
-  }, [payment]);
+  }, [payment, signoutAccount]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -110,7 +117,7 @@ const CheckoutForm = ({ payment, cartProduct }) => {
           uid: user.uid,
         };
 
-        fetch(`http://localhost:5000/payments`, {
+        fetch(`https://brand-shop-server-olive.vercel.app/payments`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -131,6 +138,9 @@ const CheckoutForm = ({ payment, cartProduct }) => {
             } else {
               swal('There was an error.', '', 'error');
             }
+          })
+          .catch(() => {
+            signoutAccount();
           });
       }
     }

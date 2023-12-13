@@ -28,14 +28,14 @@ const Login = () => {
     loginGoogle()
       .then((currentUser) => {
         swal('Account login successfully', '', 'success');
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://brand-shop-server-olive.vercel.app/users`)
           .then((res) => res.json())
           .then((data = []) => {
             const ifExists = data.find(
               (item) => item.email === currentUser.user.email
             );
             if (!ifExists) {
-              fetch(`http://localhost:5000/users`, {
+              fetch(`https://brand-shop-server-olive.vercel.app/users`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const Login = () => {
               });
             }
           });
-        fetch(`http://localhost:5000/jwt-token`, {
+        fetch(`https://brand-shop-server-olive.vercel.app/jwt-token`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -79,14 +79,14 @@ const Login = () => {
         swal('Login Successfull', '', 'success');
         navigate(state || '/');
         setLogin({ ...loginInit });
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://brand-shop-server-olive.vercel.app/users`)
           .then((res) => res.json())
           .then((data) => {
             const ifExists = data.find(
               (item) => item.email === currentUser.user.email
             );
             if (!ifExists) {
-              fetch(`http://localhost:5000/users`, {
+              fetch(`https://brand-shop-server-olive.vercel.app/users`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ const Login = () => {
               });
             }
           });
-        fetch(`http://localhost:5000/jwt-token`, {
+        fetch(`https://brand-shop-server-olive.vercel.app/jwt-token`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

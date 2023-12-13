@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { BiCartDownload } from 'react-icons/bi';
 import swal from 'sweetalert';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import SectionTitle from '../UI/SectionTitle';
@@ -26,6 +27,7 @@ const errorInit = {
 };
 const AddProducts = () => {
   const [addProduct, setAddProduct] = useState({ ...productInit });
+  const { signoutAccount } = useContext(AuthContext);
   const [error, setError] = useState({ ...errorInit });
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -106,7 +108,7 @@ const AddProducts = () => {
       photoUrl,
       desc,
     };
-    fetch('http://localhost:5000/product', {
+    fetch('https://brand-shop-server-olive.vercel.app/product', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -123,7 +125,10 @@ const AddProducts = () => {
           swal('There was an error', 'try again later', 'error');
         }
       })
-      .catch(() => swal('There was an error', 'try again later', 'error'));
+      .catch(() => {
+        signoutAccount();
+        swal('There was an error', 'try again later', 'error');
+      });
   };
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>

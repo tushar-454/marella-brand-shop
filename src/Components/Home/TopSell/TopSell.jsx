@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import Rating from 'react-rating';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import SectionTitle from '../../UI/SectionTitle';
 
 const TopSell = () => {
   const [topSell, setTopSell] = useState(null);
+  const { signoutAccount } = useContext(AuthContext);
   useEffect(() => {
     fetch('/TopSell.json')
       .then((res) => res.json())
-      .then((data) => setTopSell(data));
-  }, []);
+      .then((data) => setTopSell(data))
+      .catch(() => {
+        signoutAccount();
+      });
+  }, [signoutAccount]);
   return (
     <div className='bg-white border-gray-200 dark:bg-gray-900/90'>
       <div className='max-w-screen-xl mx-auto p-4'>

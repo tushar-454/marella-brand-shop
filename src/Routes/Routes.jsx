@@ -40,7 +40,9 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: () =>
-          fetch('http://localhost:5000/carts', { credentials: 'include' }),
+          fetch('https://brand-shop-server-olive.vercel.app/carts', {
+            credentials: 'include',
+          }),
       },
       {
         path: '/login',
@@ -66,9 +68,12 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/brand/${params.brandname}`, {
-            credentials: 'include',
-          }),
+          fetch(
+            `https://brand-shop-server-olive.vercel.app/brand/${params.brandname}`,
+            {
+              credentials: 'include',
+            }
+          ),
       },
       {
         path: '/brand/:brandname/:productId',
@@ -78,9 +83,12 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/${params.productId}`, {
-            credentials: 'include',
-          }),
+          fetch(
+            `https://brand-shop-server-olive.vercel.app/${params.productId}`,
+            {
+              credentials: 'include',
+            }
+          ),
       },
       {
         path: '/update-product/:productId',
@@ -90,9 +98,12 @@ const routes = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/${params.productId}`, {
-            credentials: 'include',
-          }),
+          fetch(
+            `https://brand-shop-server-olive.vercel.app/${params.productId}`,
+            {
+              credentials: 'include',
+            }
+          ),
       },
       {
         path: '/checkout',

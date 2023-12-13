@@ -5,13 +5,20 @@ import SectionTitle from '../UI/SectionTitle';
 const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
   const [paymentHistory, setPaymentHistory] = useState([]);
+  const { signoutAccount } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/payment-history?uid=${user.uid}`, {
-      credentials: 'include',
-    })
+    fetch(
+      `https://brand-shop-server-olive.vercel.app/payment-history?uid=${user.uid}`,
+      {
+        credentials: 'include',
+      }
+    )
       .then((res) => res.json())
-      .then((data) => setPaymentHistory(data));
-  }, [user]);
+      .then((data) => setPaymentHistory(data))
+      .catch(() => {
+        signoutAccount();
+      });
+  }, [user, signoutAccount]);
 
   return (
     <section className='bg-white dark:bg-gray-900/90'>
