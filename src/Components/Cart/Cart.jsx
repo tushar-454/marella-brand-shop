@@ -8,7 +8,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Button from '../UI/Button';
 import SectionTitle from '../UI/SectionTitle';
 const Cart = () => {
-  const { user, setCartItemCount } = useContext(AuthContext);
+  const { user, setCartItemCount, signoutAccount } = useContext(AuthContext);
   const allCartProduct = useLoaderData();
   const userCart = allCartProduct.filter((product) => product.uid === user.uid);
   const [cartProduct, setCartProduct] = useState(userCart);
@@ -23,6 +23,7 @@ const Cart = () => {
       if (willDelete) {
         fetch(`http://localhost:5000/carts/${user.uid}/${productId}`, {
           method: 'DELETE',
+          credentials: 'include',
         })
           .then((res) => res.json())
           .then((data) => {
@@ -35,7 +36,10 @@ const Cart = () => {
               swal('Delete product from cart successfully', '', 'success');
             }
           })
-          .catch(() => swal('There was an error', 'try again later', 'error'));
+          .catch(() => {
+            signoutAccount();
+            swal('There was an error', 'try again later', 'error');
+          });
       } else {
         swal('Your cart item is safe!');
       }

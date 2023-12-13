@@ -6,7 +6,9 @@ const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
   const [paymentHistory, setPaymentHistory] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/payment-history?uid=${user.uid}`)
+    fetch(`http://localhost:5000/payment-history?uid=${user.uid}`, {
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((data) => setPaymentHistory(data));
   }, [user]);

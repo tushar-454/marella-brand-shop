@@ -139,6 +139,22 @@ const Signup = () => {
             swal('There was an error !', error.message, 'error')
           );
         swal('Account Create Successfull', '', 'success');
+        fetch(`http://localhost:5000/jwt-token`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email: currentUser.user.email }),
+        }).then(() => {});
+        fetch(`http://localhost:5000/users`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email: currentUser.user.email }),
+        }).then(() => {});
         setUpdateProfile({ photo: photoUrl, name: name });
         setTerms(false);
         navigate('/');

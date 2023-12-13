@@ -60,6 +60,7 @@ const CheckoutForm = ({ payment, cartProduct }) => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ price: payment }),
       })
         .then((res) => res.json())
@@ -114,6 +115,7 @@ const CheckoutForm = ({ payment, cartProduct }) => {
           headers: {
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
           body: JSON.stringify({ payment: paymentInfo }),
         })
           .then((res) => res.json())

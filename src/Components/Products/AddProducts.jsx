@@ -111,6 +111,7 @@ const AddProducts = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify(newProductObject),
     })
       .then((res) => res.json())

@@ -26,8 +26,33 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLoginGoogle = () => {
     loginGoogle()
-      .then(() => {
+      .then((currentUser) => {
         swal('Account login successfully', '', 'success');
+        fetch(`http://localhost:5000/users`)
+          .then((res) => res.json())
+          .then((data = []) => {
+            const ifExists = data.find(
+              (item) => item.email === currentUser.user.email
+            );
+            if (!ifExists) {
+              fetch(`http://localhost:5000/users`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ email: currentUser.user.email }),
+              });
+            }
+          });
+        fetch(`http://localhost:5000/jwt-token`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email: currentUser.user.email }),
+        }).then(() => {});
         navigate(state || '/');
       })
       .catch((error) => swal('There was an error !', error.message, 'error'));
@@ -50,10 +75,35 @@ const Login = () => {
       return;
     }
     signinEmailandPass(email, password)
-      .then(() => {
+      .then((currentUser) => {
         swal('Login Successfull', '', 'success');
         navigate(state || '/');
         setLogin({ ...loginInit });
+        fetch(`http://localhost:5000/users`)
+          .then((res) => res.json())
+          .then((data) => {
+            const ifExists = data.find(
+              (item) => item.email === currentUser.user.email
+            );
+            if (!ifExists) {
+              fetch(`http://localhost:5000/users`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ email: currentUser.user.email }),
+              });
+            }
+          });
+        fetch(`http://localhost:5000/jwt-token`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email: currentUser.user.email }),
+        }).then(() => {});
       })
       .catch((error) => {
         swal('There was an error !', error.message, 'error');
