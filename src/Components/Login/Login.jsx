@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Helmet } from 'react-helmet';
+import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -10,17 +11,67 @@ import Checkbox from '../UI/Checkbox';
 import FormIllustrarion from '../UI/FormIllustration';
 import FormLayout from '../UI/FormLayout';
 import Input from '../UI/Input';
-const loginInit = {
-  email: '',
-  password: '',
-};
-const errorInit = {
-  email: '',
-  password: '',
+const resolver = async (values) => {
+  const errors = {};
+  if (!values.email) {
+    errors.email = {
+      type: 'required',
+      message: 'Email is required',
+    };
+  } else if (!values.email.includes('@') || !values.email.includes('.')) {
+    errors.email = {
+      type: 'required',
+      message: 'Email is not valid',
+    };
+  }
+  if (!values.password) {
+    errors.password = {
+      type: 'required',
+      message: 'Password is required',
+    };
+  } else if (values.password.length < 6) {
+    errors.password = {
+      type: 'required',
+      message: 'Password must be at least 6 characters',
+    };
+  } else if (values.password.length > 20) {
+    errors.password = {
+      type: 'required',
+      message: 'Password must be less than 20 characters',
+    };
+  } else if (!values.password.match(/[a-zA-Z]/g)) {
+    errors.password = {
+      type: 'required',
+      message: 'Password must contain at least one letter',
+    };
+  } else if (!values.password.match(/[0-9]/g)) {
+    errors.password = {
+      type: 'required',
+      message: 'Password must contain at least one number',
+    };
+  } else if (!values.password.match(/[!@#$%^&*]/g)) {
+    errors.password = {
+      type: 'required',
+      message: 'Password must contain at least one special character',
+    };
+  } else if (values.password.match(/\s/g)) {
+    errors.password = {
+      type: 'required',
+      message: 'Password must not contain any whitespace',
+    };
+  }
+  return {
+    errors,
+    values,
+  };
 };
 const Login = () => {
-  const [login, setLogin] = useState({ ...loginInit });
-  const [error, setError] = useState({ ...errorInit });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ mode: 'all', resolver });
   const { loginGoogle, signinEmailandPass } = useContext(AuthContext);
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -57,28 +108,14 @@ const Login = () => {
       })
       .catch((error) => swal('There was an error !', error.message, 'error'));
   };
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setLogin((prev) => ({ ...prev, [name]: value }));
-    setError((prev) => ({ ...prev, [name]: '' }));
-  };
   // handle email and password login
-  const handleSigninEmailPassword = (e) => {
-    e.preventDefault();
-    const { email, password } = login;
-    if (!email) {
-      setError((prev) => ({ ...prev, email: 'Email required !' }));
-      return;
-    }
-    if (!password) {
-      setError((prev) => ({ ...prev, password: 'Password required !' }));
-      return;
-    }
+  const handleSigninEmailPassword = (data) => {
+    const { email, password } = data;
     signinEmailandPass(email, password)
       .then((currentUser) => {
         swal('Login Successfull', '', 'success');
         navigate(state || '/');
-        setLogin({ ...loginInit });
+        reset();
         fetch(`https://brand-shop-server-olive.vercel.app/users`)
           .then((res) => res.json())
           .then((data) => {
@@ -121,7 +158,7 @@ const Login = () => {
         </h1>
         <form
           className='flex flex-col gap-5'
-          onSubmit={handleSigninEmailPassword}
+          onSubmit={handleSubmit(handleSigninEmailPassword)}
         >
           <Input
             displayName={'Email'}
@@ -129,9 +166,8 @@ const Login = () => {
             id={'email'}
             name={'email'}
             placeholder={'example@gmail.com'}
-            onChange={handleInput}
-            value={login.email}
-            error={error.email}
+            formdata={{ ...register('email', { required: true }) }}
+            error={errors.email && errors.email.message}
           />
           <Input
             displayName={'Password'}
@@ -140,9 +176,8 @@ const Login = () => {
             icon={true}
             name={'password'}
             placeholder={'fkdhk*&(#$JLDFjo'}
-            onChange={handleInput}
-            value={login.password}
-            error={error.password}
+            formdata={{ ...register('password', { required: true }) }}
+            error={errors.password && errors.password.message}
           />
           {/* forgot pass and remember */}
           <div className='w-full flex justify-between items-center py-2'>

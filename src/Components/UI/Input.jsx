@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-const Input = ({ displayName, icon = false, error, id, type, ...rest }) => {
+const Input = ({
+  displayName,
+  icon = false,
+  error,
+  id,
+  type,
+  formdata,
+  ...rest
+}) => {
   const [showPass, setShowPass] = useState(false);
   return (
     <div className='w-full flex flex-col gap-2'>
@@ -14,6 +22,7 @@ const Input = ({ displayName, icon = false, error, id, type, ...rest }) => {
       <div className='relative'>
         <input
           {...rest}
+          {...formdata}
           id={id}
           type={showPass ? 'text' : type}
           className={`w-full border focus:border-slate-400 text-black text-lg outline-none p-3 rounded bg-white dark:bg-slate-300 ${
@@ -40,6 +49,7 @@ Input.propTypes = {
   error: PropTypes.string,
   id: PropTypes.string,
   icon: PropTypes.bool,
+  formdata: PropTypes.any,
 };
 
 export default Input;
